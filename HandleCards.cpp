@@ -32,9 +32,10 @@ bool initialize52Cards()
 
 /*
     Returns a proper card value.
-    sumOfOtherCards is needed here to decide if an ace card should evaluate to 1 or 11    
+    sumOfOtherCards is needed here to decide if an ace card should evaluate to 1 or 11;
+    To make things easier: if addToSum is true, this function also adds the card value to the sum
 */
-int getCardValue(int sumOfOtherCards)
+int getCardValue(int& sumOfOtherCards, bool addToSum = true)
 {
     int value{ templateCards[randomCardsGenerator::getRandomCard()] };
     if (value == -1) {
@@ -44,6 +45,8 @@ int getCardValue(int sumOfOtherCards)
             value = 1;
     }
 
+    if(addToSum)
+        sumOfOtherCards += value;
     return value;
 }
 
