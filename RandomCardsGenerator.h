@@ -5,7 +5,7 @@
 #include <random>
 
 
-namespace cardsGenerator {
+namespace randomCardsGenerator {
 
     int getRandomCard();
 
