@@ -30,3 +30,20 @@ bool initialize52Cards()
     return true;
 }
 
+/*
+    Returns a proper card value.
+    sumOfOtherCards is needed here to decide if an ace card should evaluate to 1 or 11    
+*/
+int getCardValue(int sumOfOtherCards)
+{
+    int value{ templateCards[randomCardsGenerator::getRandomCard()] };
+    if (value == -1) {
+        if (sumOfOtherCards < 11)
+            value = 11; // 11 will not make the player loose
+        else
+            value = 1;
+    }
+
+    return value;
+}
+
