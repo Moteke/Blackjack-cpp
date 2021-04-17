@@ -8,7 +8,6 @@ namespace randomCardsGenerator {
 	// returns a number in range [0...51]
 	int getRandomCard()
 	{
-		auto dice{ std::bind(dist, generator) };
-		return dice();
+		return dist(generator);
 	}
 }
