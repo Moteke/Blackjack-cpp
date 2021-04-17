@@ -31,7 +31,7 @@ namespace blackjackIO {
 			}
 
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-
+			std::cout << '\n';
 		}
 	
 		return static_cast<Decision>(decision);
