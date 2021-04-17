@@ -17,18 +17,14 @@ int main()
 	Player player{ "Player" };
 	Player croupier{ "Croupier" };
 
-	// get 2 cards for the player and 1 for the croupier
 	player.cards.emplace_back(getCardValue(player.sum));
 	player.cards.emplace_back(getCardValue(player.sum));
 	croupier.cards.emplace_back(getCardValue(croupier.sum));
 
 	bool stop{ false };
 
-	// 1. show player's cards
 	blackjackIO::outputCards(player);
-	// 2. show croupier's card
 	blackjackIO::outputCards(croupier);
-	// 3. ask player for decisions (if sum < 21): until stand is chosen or bust happens
 
 	if (player.sum == 21)
 	{
@@ -37,8 +33,6 @@ int main()
 	else {
 		auto decision = blackjackIO::askForADecision();
 
-		// just some extra formatting
-		//std::cout << '\n';
 
 		while (decision == Decision::hit) {
 			player.cards.emplace_back(getCardValue(player.sum));
@@ -48,12 +42,9 @@ int main()
 				break;
 			decision = blackjackIO::askForADecision();
 
-			// just some extra formatting
-			//std::cout << '\n';
 		}
 	}
 
-	// bust is immediate loose
 	if (player.sum > 21) {
 		std::cout << "Sorry, you lost :(";
 		return 0;
@@ -61,7 +52,6 @@ int main()
 	else if (player.sum == 21)
 		std::cout << "BLACKJACK!\n";
 
-	// 4. get cards for croupier until he has sum >= 17
 	while (croupier.sum < 17) {
 		std::cout << "Croupier gets a card...\n";
 		myUtils::sleep(500);
@@ -71,9 +61,6 @@ int main()
 	}
 
 
-	// 5. decide on who wins
-	// 
-	// if croupier went bust or has lower sum then player wins
 	if (croupier.sum > 21 || player.sum > croupier.sum)
 		std::cout << "YOU WON!!!";
 	else if (player.sum == croupier.sum)
