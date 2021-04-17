@@ -1,5 +1,6 @@
 #pragma once
 enum class Decision {
 	hit,
-	stand
+	stand,
+	max_decision
 };
