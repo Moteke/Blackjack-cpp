@@ -19,7 +19,7 @@ namespace blackjackIO {
 		bool fail{ false };
 
 		// validate input
-		while (decision < 0 || decision > static_cast<int>(Decision::max_decision) || fail) {
+		while (decision < 1 || decision > static_cast<int>(Decision::max_decision) || fail) {
 			fail = false;
 
 			std::cout << "Do you want to hit (1) or stand (2)? ";
